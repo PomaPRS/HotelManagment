@@ -50,6 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HotelContext.cs" />
+    <Compile Include="Migrations\201511281226098_Init.cs" />
+    <Compile Include="Migrations\201511281226098_Init.Designer.cs">
+      <DependentUpon>201511281226098_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +66,11 @@
       <Project>{43e83c72-c6bf-4635-9217-8b4f46d02da1}</Project>
       <Name>Hotel.Database.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511281226098_Init.resx">
+      <DependentUpon>201511281226098_Init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

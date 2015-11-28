@@ -1,4 +1,6 @@
-﻿namespace Hotel.Database.Model
+﻿using System.Collections.Generic;
+
+namespace Hotel.Database.Model
 {
     public class Room : IdentityBase
     {
@@ -6,5 +8,7 @@
         public int PlaceCount { get; set; }
         public double CostPerDay { get; set; }
         public RoomState State { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; }
     }
 }

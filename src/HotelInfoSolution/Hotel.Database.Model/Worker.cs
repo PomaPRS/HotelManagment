@@ -1,4 +1,6 @@
-﻿namespace Hotel.Database.Model
+﻿using System.Collections.Generic;
+
+namespace Hotel.Database.Model
 {
     public class Worker : IdentityBase
     {
@@ -10,6 +12,5 @@
         public string MiddleName { get; set; }
         public long PositionId { get; set; }
         public Position Position { get; set; }
-
     }
 }
