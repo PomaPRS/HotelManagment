@@ -1,0 +1,37 @@
+﻿@model HotelInfo.Models.HotelIndexViewModel
+
+@{
+    ViewBag.Title = "Гостиницы";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.ActionLink("Добавить гостиницу", "Create", null, new {@class = "btn btn-xs btn-default"})
+        </span>
+    </div>
+
+    @if (Model.Hotels.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            @foreach (var item in Model.Hotels)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", new {id = item.Value})
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список гостиниц пуст.</div>
+    }
+</div>
