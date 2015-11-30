@@ -6,6 +6,6 @@ namespace Hotel.Database.Model
     {
         public string Title { get; set; }
 
-        public ICollection<Worker> Workers { get; set; }
+        public virtual ICollection<Worker> Workers { get; set; }
     }
 }

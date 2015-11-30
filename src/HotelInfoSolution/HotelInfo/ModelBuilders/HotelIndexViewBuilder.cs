@@ -60,6 +60,7 @@ namespace HotelInfo.ModelBuilders
             var hotelItems = hotels
                 .Skip(pageSize*(page-1))
                 .Take(pageSize)
+                .AsEnumerable()
                 .Select(x => new SelectListItem()
                 {
                     Value = x.Id.ToString(),

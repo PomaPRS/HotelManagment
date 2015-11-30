@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using Hotel.Database;
 using Hotel.Database.Common;
 using Hotel.Web.Common;
-using HotelInfo.ModelBuilders;
 using HotelInfo.Models;
 using Ninject;
 
 namespace HotelInfo.Controllers
 {
-    public sealed class HotelController : Controller
+    public sealed class HotelsController : Controller
     {
         private readonly IRepository<Hotel.Database.Model.Hotel> _hotelRepo;
         private readonly IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel> _hotelBuilder;
@@ -23,7 +17,7 @@ namespace HotelInfo.Controllers
         private readonly IModelCommand<HotelCreateModel, Hotel.Database.Model.Hotel> _hotelCreateCommand;
 
         [Inject]
-        public HotelController(
+        public HotelsController(
             IRepository<Hotel.Database.Model.Hotel> hotelRepo, 
             IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel> hotelBuilder, 
             IModelBuilder<HotelIndexViewModel, HotelFilterModel> hotelIndexBuilder, 
@@ -44,13 +38,17 @@ namespace HotelInfo.Controllers
             var hotelIndexModel = _hotelIndexBuilder.CreateFrom(filterModel);
             return View(hotelIndexModel);
         }
-        
-        public ActionResult Details(int id)
+
+        public ActionResult Details(int? id)
         {
-            var hotel = _hotelRepo.Get(id);
-            if (hotel == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var hotel = _hotelRepo.Get(id.Value);
+            if (hotel == null)
+            {
+                return HttpNotFound();
             }
             var model = _hotelBuilder.CreateFrom(hotel);
             return View(model);
@@ -63,75 +61,67 @@ namespace HotelInfo.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(HotelCreateModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var hotel = _hotelCreateCommand.Execute(model);
-                    return RedirectToAction("Details", new {id = hotel.Id});
-                }
-            }
-            catch
-            {
-                ViewBag.ErrorMessage = "Произошла ошибка при создании";
+                var hotel = _hotelCreateCommand.Execute(model);
+                return RedirectToAction("Details", new {id = hotel.Id});
             }
             return View(model);
         }
         
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var hotel = _hotelRepo.Get(id);
-            if (hotel == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var hotel = _hotelRepo.Get(id.Value);
+            if (hotel == null)
+            {
+                return HttpNotFound();
             }
             var model = _hotelEditBuilder.CreateFrom(hotel);
             return View(model);
         }
-        
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(HotelEditModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
                 var hotel = _hotelEditCommand.Execute(model);
                 return RedirectToAction("Details", new {id = hotel.Id});
             }
-            catch
-            {
-                ViewBag.ErrorMessage = "Произошла ошибка при редактировании";
-            }
-            return View();
+            return View(model);
         }
-        
-        public ActionResult Delete(int id)
+
+        public ActionResult Delete(int? id)
         {
-            var hotel = _hotelRepo.Get(id);
-            if (hotel == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var hotel = _hotelRepo.Get(id.Value);
+            if (hotel == null)
+            {
+                return HttpNotFound();
             }
             var model = _hotelBuilder.CreateFrom(hotel);
             return View(model);
         }
-        
-        [HttpPost]
-        public ActionResult DeleteConfirm(int id)
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                var hotel = _hotelRepo.Get(id);
-                _hotelRepo.Delete(hotel);
-                _hotelRepo.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (Exception)
-            {
-                ViewBag.ErrorMessage = "Произошла ошибка при удалении";
-            }
-            return RedirectToAction("Delete", new {id});
+            var hotel = _hotelRepo.Get(id);
+            _hotelRepo.Delete(hotel);
+            _hotelRepo.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

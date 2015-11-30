@@ -8,6 +8,6 @@ namespace Hotel.Database.Model
         public string IndividualId { get; set; }
         public string Address { get; set; }
 
-        public ICollection<Worker> Workers { get; set; }
+        public virtual ICollection<Worker> Workers { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace Hotel.Database.Model
         public string SecondName { get; set; }
         public string MiddleName { get; set; }
 
-        public ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

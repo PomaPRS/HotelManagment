@@ -1,0 +1,71 @@
+﻿@model HotelInfo.Models.WorkerViewModel
+
+@{
+    var name = string.Format("{0} {1} {2}", Model.FirstName, Model.SecondName, Model.MiddleName);
+    ViewBag.Title = string.Format("Удалить {0}", name);
+}
+
+<h3>Подтвердите удаление сотрудника</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SecondName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SecondName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MiddleName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IndividualId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IndividualId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HotelTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PositionTitle)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dd>
+                @using (Html.BeginForm("Delete", "Workers", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-primary" />
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

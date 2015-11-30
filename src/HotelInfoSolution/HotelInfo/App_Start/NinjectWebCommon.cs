@@ -69,13 +69,22 @@ namespace HotelInfo
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<DbContext>().To<HotelContext>();
+
             kernel.Bind<IRepository<Hotel.Database.Model.Hotel>>().To<Repository<Hotel.Database.Model.Hotel>>();
             kernel.Bind<IRepository<Worker>>().To<Repository<Worker>>();
+            kernel.Bind<IRepository<Position>>().To<Repository<Position>>();
+
             kernel.Bind<IModelBuilder<HotelIndexViewModel, HotelFilterModel>>().To<HotelIndexViewBuilder>();
             kernel.Bind<IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel>>().To<HotelViewModelBuilder>();
             kernel.Bind<IModelBuilder<HotelEditModel, Hotel.Database.Model.Hotel>>().To<HotelEditModelBuilder>();
             kernel.Bind<IModelCommand<HotelEditModel, Hotel.Database.Model.Hotel>>().To<HotelEditCommand>();
             kernel.Bind<IModelCommand<HotelCreateModel, Hotel.Database.Model.Hotel>>().To<HotelCreateCommand>();
+
+            kernel.Bind<IModelBuilder<WorkerIndexViewModel, WorkerFilterModel>>().To<WorkerIndexViewBuilder>();
+            kernel.Bind<IModelBuilder<WorkerViewModel, Worker>>().To<WorkerViewModelBuilder>();
+            kernel.Bind<IModelBuilder<WorkerEditModel, Worker>>().To<WorkerEditModelBuilder>();
+            kernel.Bind<IModelCommand<WorkerEditModel, Worker>>().To<WorkerEditCommand>();
+            kernel.Bind<IModelCommand<WorkerCreateModel, Worker>>().To<WorkerCreateCommand>();
         }
     }
 }

@@ -143,15 +143,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BuilderCommands\HotelCreateCommand.cs" />
     <Compile Include="BuilderCommands\HotelEditCommand.cs" />
+    <Compile Include="BuilderCommands\WorkerCreateCommand.cs" />
+    <Compile Include="BuilderCommands\WorkerEditCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\HotelsController.cs" />
+    <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBuilders\WorkerEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelEditModelBuilder.cs" />
+    <Compile Include="ModelBuilders\WorkerIndexViewBuilder.cs" />
     <Compile Include="ModelBuilders\HotelIndexViewBuilder.cs" />
+    <Compile Include="ModelBuilders\WorkerViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelViewModelBuilder.cs" />
     <Compile Include="Models\HotelModels.cs" />
+    <Compile Include="Models\WorkerModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,12 +194,18 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Hotel\Index.cshtml" />
-    <Content Include="Views\Hotel\Create.cshtml" />
-    <Content Include="Views\Hotel\Edit.cshtml" />
-    <Content Include="Views\Hotel\Details.cshtml" />
-    <Content Include="Views\Hotel\Delete.cshtml" />
-    <Content Include="Views\Hotel\_HotelFilterPartial.cshtml" />
+    <Content Include="Views\Hotels\Index.cshtml" />
+    <Content Include="Views\Hotels\Create.cshtml" />
+    <Content Include="Views\Hotels\Edit.cshtml" />
+    <Content Include="Views\Hotels\Details.cshtml" />
+    <Content Include="Views\Hotels\Delete.cshtml" />
+    <Content Include="Views\Hotels\_HotelFilterPartial.cshtml" />
+    <Content Include="Views\Workers\Create.cshtml" />
+    <Content Include="Views\Workers\Delete.cshtml" />
+    <Content Include="Views\Workers\Details.cshtml" />
+    <Content Include="Views\Workers\Edit.cshtml" />
+    <Content Include="Views\Workers\Index.cshtml" />
+    <Content Include="Views\Workers\_WorkerFilterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

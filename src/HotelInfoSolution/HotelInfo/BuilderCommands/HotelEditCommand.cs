@@ -15,7 +15,7 @@ namespace HotelInfo.BuilderCommands
 
         public Hotel.Database.Model.Hotel Execute(HotelEditModel model)
         {
-            var hotel = model.Id == 0 ? new Hotel.Database.Model.Hotel() : _hotelRepo.Get(model.Id);
+            var hotel = _hotelRepo.Get(model.Id);
             hotel.Address = model.Address;
             hotel.IndividualId = model.IndividualId;
             hotel.Title = model.Title;

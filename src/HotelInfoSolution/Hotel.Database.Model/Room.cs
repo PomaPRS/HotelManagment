@@ -9,6 +9,6 @@ namespace Hotel.Database.Model
         public double CostPerDay { get; set; }
         public RoomState State { get; set; }
 
-        public ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

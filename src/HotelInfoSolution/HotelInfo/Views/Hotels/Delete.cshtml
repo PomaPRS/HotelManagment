@@ -1,7 +1,7 @@
 ﻿@model HotelInfo.Models.HotelViewModel
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = string.Format("Удалить {0}", Model.Title);
 }
 
 <h3>Подтвердите удаление гостиницы</h3>
@@ -36,8 +36,9 @@
 
         <dl class="dl-horizontal">
             <dd>
-                @using (Html.BeginForm("DeleteConfirm", "Hotel", FormMethod.Post))
+                @using (Html.BeginForm("Delete", "Hotels", FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
                     @Html.HiddenFor(x => x.Id)
                     <div class="form-actions no-color">
                         <input type="submit" value="Удалить" class="btn btn-primary" />
