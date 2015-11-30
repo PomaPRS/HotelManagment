@@ -37,9 +37,9 @@ namespace HotelInfo.ModelBuilders
         {
             var hotels = _hotelRepo.GetRange();
             if (!string.IsNullOrEmpty(filter.Title))
-                hotels = hotels.Where(x => x.Title == filter.Title);
+                hotels = hotels.Where(x => x.Title.Contains(filter.Title));
             if (!string.IsNullOrEmpty(filter.Address))
-                hotels = hotels.Where(x => x.Address == filter.Address);
+                hotels = hotels.Where(x => x.Address.Contains(filter.Address));
             if (!string.IsNullOrEmpty(filter.IndividualId))
                 hotels = hotels.Where(x => x.IndividualId == filter.IndividualId);
 

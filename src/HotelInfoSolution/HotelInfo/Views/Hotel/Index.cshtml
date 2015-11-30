@@ -5,7 +5,9 @@
 }
 
 <h2>@ViewBag.Title</h2>
-
+@{
+    Html.RenderPartial("_HotelFilterPartial", Model.Filter);
+}
 <div class="panel panel-default">
     <div class="panel-heading">
         @ViewBag.Title
