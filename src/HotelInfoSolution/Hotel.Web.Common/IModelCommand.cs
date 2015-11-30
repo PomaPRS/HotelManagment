@@ -1,7 +1,7 @@
 ﻿namespace Hotel.Web.Common
 {
-    public interface IModelCommand<TInput>
+    public interface IModelCommand<TInput, TEntity>
     {
-        void Execute(TInput model);
+        TEntity Execute(TInput model);
     }
 }

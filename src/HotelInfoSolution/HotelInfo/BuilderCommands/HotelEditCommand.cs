@@ -4,7 +4,7 @@ using HotelInfo.Models;
 
 namespace HotelInfo.BuilderCommands
 {
-    public class HotelEditCommand : IModelCommand<HotelEditModel>
+    public class HotelEditCommand : IModelCommand<HotelEditModel, Hotel.Database.Model.Hotel>
     {
         private readonly IRepository<Hotel.Database.Model.Hotel> _hotelRepo;
 
@@ -13,7 +13,7 @@ namespace HotelInfo.BuilderCommands
             _hotelRepo = hotelRepo;
         }
 
-        public void Execute(HotelEditModel model)
+        public Hotel.Database.Model.Hotel Execute(HotelEditModel model)
         {
             var hotel = model.Id == 0 ? new Hotel.Database.Model.Hotel() : _hotelRepo.Get(model.Id);
             hotel.Address = model.Address;
@@ -22,6 +22,8 @@ namespace HotelInfo.BuilderCommands
 
             _hotelRepo.AddOrUpdate(hotel);
             _hotelRepo.SaveChanges();
+
+            return hotel;
         }
     }
 }

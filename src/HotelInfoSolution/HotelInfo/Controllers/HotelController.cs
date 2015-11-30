@@ -17,20 +17,26 @@ namespace HotelInfo.Controllers
     {
         private readonly IRepository<Hotel.Database.Model.Hotel> _hotelRepo;
         private readonly IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel> _hotelBuilder;
-        private readonly IModelCommand<HotelEditModel> _hotelCommand;
         private readonly IModelBuilder<HotelIndexViewModel, HotelFilterModel> _hotelIndexBuilder;
+        private readonly IModelBuilder<HotelEditModel, Hotel.Database.Model.Hotel> _hotelEditBuilder;
+        private readonly IModelCommand<HotelEditModel, Hotel.Database.Model.Hotel> _hotelEditCommand;
+        private readonly IModelCommand<HotelCreateModel, Hotel.Database.Model.Hotel> _hotelCreateCommand;
 
         [Inject]
         public HotelController(
-            IRepository<Hotel.Database.Model.Hotel> hotelRepo,
+            IRepository<Hotel.Database.Model.Hotel> hotelRepo, 
             IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel> hotelBuilder, 
-            IModelCommand<HotelEditModel> hotelCommand, 
-            IModelBuilder<HotelIndexViewModel, HotelFilterModel> hotelIndexBuilder)
+            IModelBuilder<HotelIndexViewModel, HotelFilterModel> hotelIndexBuilder, 
+            IModelCommand<HotelEditModel, Hotel.Database.Model.Hotel> hotelEditCommand, 
+            IModelCommand<HotelCreateModel, Hotel.Database.Model.Hotel> hotelCreateCommand, 
+            IModelBuilder<HotelEditModel, Hotel.Database.Model.Hotel> hotelEditBuilder)
         {
-            _hotelBuilder = hotelBuilder;
-            _hotelCommand = hotelCommand;
-            _hotelIndexBuilder = hotelIndexBuilder;
             _hotelRepo = hotelRepo;
+            _hotelBuilder = hotelBuilder;
+            _hotelIndexBuilder = hotelIndexBuilder;
+            _hotelEditCommand = hotelEditCommand;
+            _hotelCreateCommand = hotelCreateCommand;
+            _hotelEditBuilder = hotelEditBuilder;
         }
 
         public ActionResult Index(HotelFilterModel filterModel)
@@ -52,23 +58,26 @@ namespace HotelInfo.Controllers
         
         public ActionResult Create()
         {
-            var model = new HotelEditModel();
+            var model = new HotelCreateModel();
             return View(model);
         }
         
         [HttpPost]
-        public ActionResult Create(HotelEditModel model)
+        public ActionResult Create(HotelCreateModel model)
         {
             try
             {
-                _hotelCommand.Execute(model);
-                return RedirectToAction("Details", new {id = model.Id});
+                if (ModelState.IsValid)
+                {
+                    var hotel = _hotelCreateCommand.Execute(model);
+                    return RedirectToAction("Details", new {id = hotel.Id});
+                }
             }
             catch
             {
                 ViewBag.ErrorMessage = "Произошла ошибка при создании";
             }
-            return View();
+            return View(model);
         }
         
         public ActionResult Edit(int id)
@@ -78,7 +87,7 @@ namespace HotelInfo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var model = _hotelBuilder.CreateFrom(hotel);
+            var model = _hotelEditBuilder.CreateFrom(hotel);
             return View(model);
         }
         
@@ -87,8 +96,8 @@ namespace HotelInfo.Controllers
         {
             try
             {
-                _hotelCommand.Execute(model);
-                return RedirectToAction("Index");
+                var hotel = _hotelEditCommand.Execute(model);
+                return RedirectToAction("Details", new {id = hotel.Id});
             }
             catch
             {

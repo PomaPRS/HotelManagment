@@ -12,13 +12,21 @@ namespace HotelInfo.Models
         public string Address { get; set; }
     }
 
-    public class HotelViewModel : HotelEditModel
+    public class HotelViewModel
     {
+        public long Id { get; set; }
+        public string Title { get; set; }
+        public string IndividualId { get; set; }
+        public string Address { get; set; }
+
         public ICollection<SelectListItem> Workers { get; set; }
     }
 
-    public class HotelCreateModel : HotelEditModel
+    public class HotelCreateModel
     {
+        public string Title { get; set; }
+        public string IndividualId { get; set; }
+        public string Address { get; set; }
     }
 
     public enum HotelSortingType

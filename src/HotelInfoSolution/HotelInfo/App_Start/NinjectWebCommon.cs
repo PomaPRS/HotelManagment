@@ -46,7 +46,7 @@ namespace HotelInfo
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            var kernel = new StandardKernel(new NinjectSettings {InjectNonPublic = true});
             try
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
@@ -73,7 +73,9 @@ namespace HotelInfo
             kernel.Bind<IRepository<Worker>>().To<Repository<Worker>>();
             kernel.Bind<IModelBuilder<HotelIndexViewModel, HotelFilterModel>>().To<HotelIndexViewBuilder>();
             kernel.Bind<IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel>>().To<HotelViewModelBuilder>();
-            kernel.Bind<IModelCommand<HotelEditModel>>().To<HotelEditCommand>();
+            kernel.Bind<IModelBuilder<HotelEditModel, Hotel.Database.Model.Hotel>>().To<HotelEditModelBuilder>();
+            kernel.Bind<IModelCommand<HotelEditModel, Hotel.Database.Model.Hotel>>().To<HotelEditCommand>();
+            kernel.Bind<IModelCommand<HotelCreateModel, Hotel.Database.Model.Hotel>>().To<HotelCreateCommand>();
         }
     }
 }

@@ -36,6 +36,7 @@ namespace HotelInfo.ModelBuilders
         {
             return _workerRepo
                 .GetRange(x => x.HotelId == hotelId)
+                .AsEnumerable()
                 .Select(x => new SelectListItem()
                 {
                     Text = string.Format("{0} {1} {2}", x.FirstName, x.SecondName, x.MiddleName),
