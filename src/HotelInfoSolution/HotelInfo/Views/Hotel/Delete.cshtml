@@ -1,10 +1,10 @@
 ﻿@model HotelInfo.Models.HotelViewModel
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = "Delete";
 }
 
-<h2>@Model.Title</h2>
+<h3>Подтвердите удаление гостиницы</h3>
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -36,8 +36,13 @@
 
         <dl class="dl-horizontal">
             <dd>
-                @Html.ActionLink("Изменить", "Edit", new {id = Model.Id}, new {@class = "btn btn-primary"})
-                @Html.ActionLink("Удалить", "Delete", new {id = Model.Id}, new {@class = "btn btn-default"})
+                @using (Html.BeginForm("DeleteConfirm", "Hotel", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-default" />
+                    </div>
+                }
             </dd>
         </dl>
     </div>

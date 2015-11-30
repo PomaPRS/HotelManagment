@@ -92,7 +92,7 @@ namespace HotelInfo.Controllers
         }
         
         [HttpPost]
-        public ActionResult Edit(int id, HotelEditModel model)
+        public ActionResult Edit(HotelEditModel model)
         {
             try
             {
@@ -117,7 +117,6 @@ namespace HotelInfo.Controllers
             return View(model);
         }
         
-        [Route("Delete")]
         [HttpPost]
         public ActionResult DeleteConfirm(int id)
         {
@@ -125,13 +124,14 @@ namespace HotelInfo.Controllers
             {
                 var hotel = _hotelRepo.Get(id);
                 _hotelRepo.Delete(hotel);
+                _hotelRepo.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
                 ViewBag.ErrorMessage = "Произошла ошибка при удалении";
             }
-            return View();
+            return RedirectToAction("Delete", new {id});
         }
     }
 }
