@@ -1,0 +1,39 @@
+﻿@model HotelInfo.Models.PositionIndexViewModel
+
+@{
+    ViewBag.Title = "Должности";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    Html.RenderPartial("_PositionFilterPartial", Model.Filter);
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.ActionLink("Добавить должность", "Create", null, new {@class = "btn btn-xs btn-default"})
+        </span>
+    </div>
+
+    @if (Model.Positions.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            @foreach (var item in Model.Positions)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", new {id = item.Value})
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список должностей пуст.</div>
+    }
+</div>

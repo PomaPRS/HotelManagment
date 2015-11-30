@@ -24,7 +24,7 @@ namespace HotelInfo.BuilderCommands
                 Title = model.Title
             };
 
-            _hotelRepo.AddOrUpdate(hotel);
+            _hotelRepo.Add(hotel);
             _hotelRepo.SaveChanges();
 
             return hotel;

@@ -39,7 +39,7 @@ namespace HotelInfo.BuilderCommands
                 PositionId = position.Id
             };
 
-            _workerRepo.AddOrUpdate(worker);
+            _workerRepo.Add(worker);
             _workerRepo.SaveChanges();
 
             return worker;

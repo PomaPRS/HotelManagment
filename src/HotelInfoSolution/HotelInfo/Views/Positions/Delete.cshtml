@@ -1,0 +1,38 @@
+﻿@model HotelInfo.Models.PositionViewModel
+
+@{
+    ViewBag.Title = string.Format("Удалить {0}", Model.Title);
+}
+
+<h3>Подтвердите удаление должности</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dd>
+                @using (Html.BeginForm("Delete", "Positions", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-primary" />
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

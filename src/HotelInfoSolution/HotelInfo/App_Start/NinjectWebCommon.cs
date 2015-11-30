@@ -85,6 +85,12 @@ namespace HotelInfo
             kernel.Bind<IModelBuilder<WorkerEditModel, Worker>>().To<WorkerEditModelBuilder>();
             kernel.Bind<IModelCommand<WorkerEditModel, Worker>>().To<WorkerEditCommand>();
             kernel.Bind<IModelCommand<WorkerCreateModel, Worker>>().To<WorkerCreateCommand>();
+
+            kernel.Bind<IModelBuilder<PositionIndexViewModel, PositionFilterModel>>().To<PositionIndexViewBuilder>();
+            kernel.Bind<IModelBuilder<PositionViewModel, Position>>().To<PositionViewModelBuilder>();
+            kernel.Bind<IModelBuilder<PositionEditModel, Position>>().To<PositionEditModelBuilder>();
+            kernel.Bind<IModelCommand<PositionEditModel, Position>>().To<PositionEditCommand>();
+            kernel.Bind<IModelCommand<PositionCreateModel, Position>>().To<PositionCreateCommand>();
         }
     }
 }
