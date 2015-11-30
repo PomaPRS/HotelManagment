@@ -1,0 +1,39 @@
+﻿@model HotelInfo.Models.VisitorIndexViewModel
+
+@{
+    ViewBag.Title = "Посетители";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    Html.RenderPartial("_VisitorFilterPartial", Model.Filter);
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.ActionLink("Добавить посетителя", "Create", null, new { @class = "btn btn-xs btn-default" })
+        </span>
+    </div>
+
+    @if (Model.Visitors.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Имя</th>
+            </tr>
+            @foreach (var item in Model.Visitors)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", new { id = item.Value })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список посетителей пуст.</div>
+    }
+</div>

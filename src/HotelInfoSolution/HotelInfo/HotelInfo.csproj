@@ -144,26 +144,33 @@
     <Compile Include="BuilderCommands\HotelCreateCommand.cs" />
     <Compile Include="BuilderCommands\HotelEditCommand.cs" />
     <Compile Include="BuilderCommands\PositionCreateCommand.cs" />
+    <Compile Include="BuilderCommands\VisitorCreateCommand.cs" />
     <Compile Include="BuilderCommands\WorkerCreateCommand.cs" />
     <Compile Include="BuilderCommands\PositionEditCommand.cs" />
+    <Compile Include="BuilderCommands\VisitorEditCommand.cs" />
     <Compile Include="BuilderCommands\WorkerEditCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
+    <Compile Include="Controllers\VisitorsController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ModelBuilders\PositionEditModelBuilder.cs" />
+    <Compile Include="ModelBuilders\VisitorEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\WorkerEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\PositionIndexViewBuilder.cs" />
+    <Compile Include="ModelBuilders\VisitorIndexViewBuilder.cs" />
     <Compile Include="ModelBuilders\WorkerIndexViewBuilder.cs" />
     <Compile Include="ModelBuilders\HotelIndexViewBuilder.cs" />
     <Compile Include="ModelBuilders\PositionViewModelBuilder.cs" />
+    <Compile Include="ModelBuilders\VisitorViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\WorkerViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelViewModelBuilder.cs" />
     <Compile Include="Models\HotelModels.cs" />
+    <Compile Include="Models\VisitorModels.cs" />
     <Compile Include="Models\PositionModels.cs" />
     <Compile Include="Models\WorkerModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,6 +226,12 @@
     <Content Include="Views\Positions\Details.cshtml" />
     <Content Include="Views\Positions\Edit.cshtml" />
     <Content Include="Views\Positions\Index.cshtml" />
+    <Content Include="Views\Visitors\_VisitorFilterPartial.cshtml" />
+    <Content Include="Views\Visitors\Create.cshtml" />
+    <Content Include="Views\Visitors\Delete.cshtml" />
+    <Content Include="Views\Visitors\Details.cshtml" />
+    <Content Include="Views\Visitors\Edit.cshtml" />
+    <Content Include="Views\Visitors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

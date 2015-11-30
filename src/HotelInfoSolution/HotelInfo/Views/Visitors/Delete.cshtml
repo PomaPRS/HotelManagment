@@ -1,11 +1,11 @@
-﻿@model HotelInfo.Models.WorkerViewModel
+﻿@model HotelInfo.Models.VisitorViewModel
 
 @{
     var name = string.Format("{0} {1} {2}", Model.FirstName, Model.SecondName, Model.MiddleName);
     ViewBag.Title = string.Format("Удалить {0}", name);
 }
 
-<h3>Подтвердите удаление сотрудника</h3>
+<h3>Подтвердите удаление посетителя</h3>
 
 <div class="panel panel-default">
     <div class="panel-body">
@@ -33,35 +33,11 @@
             <dd>
                 @Html.DisplayFor(model => model.MiddleName)
             </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.IndividualId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.IndividualId)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HotelTitle)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HotelTitle)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.PositionTitle)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.PositionTitle)
-            </dd>
         </dl>
 
         <dl class="dl-horizontal">
             <dd>
-                @using (Html.BeginForm("Delete", "Workers", FormMethod.Post))
+                @using (Html.BeginForm("Delete", "Visitors", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(x => x.Id)
