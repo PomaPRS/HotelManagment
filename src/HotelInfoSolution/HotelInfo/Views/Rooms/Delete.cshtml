@@ -1,0 +1,78 @@
+﻿@model HotelInfo.Models.RoomViewModel
+
+@{
+    ViewBag.Title = string.Format("Удалить {0}", Model.Number);
+}
+
+<h3>Подтвердите удаление гостиничного номера</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HotelTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HotelTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CostPerDay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CostPerDay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PlaceCount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PlaceCount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.State)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.State)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dd>
+                @using (Html.BeginForm("Delete", "Rooms", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-primary" />
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

@@ -9,5 +9,6 @@ namespace Hotel.Database.Model
         public string Address { get; set; }
 
         public virtual ICollection<Worker> Workers { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model HotelInfo.Models.RoomIndexViewModel
+
+@{
+    ViewBag.Title = "Гостиничные номера";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    Html.RenderPartial("_RoomFilterPartial", Model.Filter);
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.ActionLink("Добавить номер", "Create", null, new {@class = "btn btn-xs btn-default"})
+        </span>
+    </div>
+
+    @if (Model.Rooms.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Номер</th>
+            </tr>
+            @foreach (var item in Model.Rooms)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", new {id = item.Value})
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список номеров пуст.</div>
+    }
+</div>

@@ -35,6 +35,10 @@ namespace Hotel.Database
                 .HasRequired(x => x.Visitor)
                 .WithMany(x => x.Reservations);
 
+            modelBuilder.Entity<Room>()
+                .HasRequired(x => x.Hotel)
+                .WithMany(x => x.Rooms);
+
             base.OnModelCreating(modelBuilder);
         }
     }

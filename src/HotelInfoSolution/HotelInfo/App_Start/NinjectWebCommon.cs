@@ -74,6 +74,7 @@ namespace HotelInfo
             kernel.Bind<IRepository<Worker>>().To<Repository<Worker>>();
             kernel.Bind<IRepository<Position>>().To<Repository<Position>>();
             kernel.Bind<IRepository<Visitor>>().To<Repository<Visitor>>();
+            kernel.Bind<IRepository<Room>>().To<Repository<Room>>();
 
             kernel.Bind<IModelBuilder<HotelIndexViewModel, HotelFilterModel>>().To<HotelIndexViewBuilder>();
             kernel.Bind<IModelBuilder<HotelViewModel, Hotel.Database.Model.Hotel>>().To<HotelViewModelBuilder>();
@@ -98,6 +99,12 @@ namespace HotelInfo
             kernel.Bind<IModelBuilder<VisitorEditModel, Visitor>>().To<VisitorEditModelBuilder>();
             kernel.Bind<IModelCommand<VisitorEditModel, Visitor>>().To<VisitorEditCommand>();
             kernel.Bind<IModelCommand<VisitorCreateModel, Visitor>>().To<VisitorCreateCommand>();
+
+            kernel.Bind<IModelBuilder<RoomIndexViewModel, RoomFilterModel>>().To<RoomIndexViewBuilder>();
+            kernel.Bind<IModelBuilder<RoomViewModel, Room>>().To<RoomViewModelBuilder>();
+            kernel.Bind<IModelBuilder<RoomEditModel, Room>>().To<RoomEditModelBuilder>();
+            kernel.Bind<IModelCommand<RoomEditModel, Room>>().To<RoomEditCommand>();
+            kernel.Bind<IModelCommand<RoomCreateModel, Room>>().To<RoomCreateCommand>();
         }
     }
 }

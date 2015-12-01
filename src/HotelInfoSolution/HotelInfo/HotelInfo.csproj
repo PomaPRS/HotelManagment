@@ -143,7 +143,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BuilderCommands\HotelCreateCommand.cs" />
     <Compile Include="BuilderCommands\HotelEditCommand.cs" />
+    <Compile Include="BuilderCommands\RoomCreateCommand.cs" />
     <Compile Include="BuilderCommands\PositionCreateCommand.cs" />
+    <Compile Include="BuilderCommands\RoomEditCommand.cs" />
     <Compile Include="BuilderCommands\VisitorCreateCommand.cs" />
     <Compile Include="BuilderCommands\WorkerCreateCommand.cs" />
     <Compile Include="BuilderCommands\PositionEditCommand.cs" />
@@ -151,13 +153,17 @@
     <Compile Include="BuilderCommands\WorkerEditCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\VisitorsController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBuilders\RoomEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\PositionEditModelBuilder.cs" />
+    <Compile Include="ModelBuilders\RoomIndexViewBuilder.cs" />
+    <Compile Include="ModelBuilders\RoomViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\VisitorEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\WorkerEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelEditModelBuilder.cs" />
@@ -170,6 +176,7 @@
     <Compile Include="ModelBuilders\WorkerViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelViewModelBuilder.cs" />
     <Compile Include="Models\HotelModels.cs" />
+    <Compile Include="Models\RoomModels.cs" />
     <Compile Include="Models\VisitorModels.cs" />
     <Compile Include="Models\PositionModels.cs" />
     <Compile Include="Models\WorkerModels.cs" />
@@ -232,6 +239,12 @@
     <Content Include="Views\Visitors\Details.cshtml" />
     <Content Include="Views\Visitors\Edit.cshtml" />
     <Content Include="Views\Visitors\Index.cshtml" />
+    <Content Include="Views\Rooms\_RoomFilterPartial.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
