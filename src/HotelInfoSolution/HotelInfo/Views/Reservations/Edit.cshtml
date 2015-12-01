@@ -1,0 +1,74 @@
+﻿@model HotelInfo.Models.ReservationEditModel
+
+@{
+    ViewBag.Title = "Редактирование";
+}
+
+<h2>Редактирование брони</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "Reservations", null, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.HotelTitle)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.HotelTitle, htmlAttributes: new {@class = "form-control"})
+                    @Html.ValidationMessageFor(m => m.HotelTitle)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.RoomNumber)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.RoomNumber, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.RoomNumber)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.VisitorName)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.VisitorName, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.VisitorName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.Advance)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.Advance, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Advance)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.ArrivalDate)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.ArrivalDate, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ArrivalDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.DepartureDate)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.DepartureDate, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DepartureDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10 ">
+                    <input type="submit" class="btn btn-primary" value="Сохранить"/>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

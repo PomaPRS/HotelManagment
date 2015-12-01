@@ -1,0 +1,39 @@
+﻿@model HotelInfo.Models.ReservationIndexViewModel
+
+@{
+    ViewBag.Title = "Бронь";
+}
+
+<h2>@ViewBag.Title</h2>
+@{
+    Html.RenderPartial("_ReservationFilterPartial", Model.Filter);
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+        <span class="pull-right">
+            @Html.ActionLink("Добавить бронь", "Create", null, new {@class = "btn btn-xs btn-default"})
+        </span>
+    </div>
+
+    @if (Model.Reservations.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Название</th>
+            </tr>
+            @foreach (var item in Model.Reservations)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", new {id = item.Value})
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список пуст.</div>
+    }
+</div>

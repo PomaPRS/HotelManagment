@@ -1,0 +1,72 @@
+﻿@model HotelInfo.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = "Просмотр брони";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HotelTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HotelTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RoomNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Advance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Advance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VisitorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VisitorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartureDate)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dd>
+                @Html.ActionLink("Изменить", "Edit", new {id = Model.Id}, new {@class = "btn btn-primary"})
+                @Html.ActionLink("Удалить", "Delete", new {id = Model.Id}, new {@class = "btn btn-default"})
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

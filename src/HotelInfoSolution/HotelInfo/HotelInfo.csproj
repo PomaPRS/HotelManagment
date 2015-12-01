@@ -143,6 +143,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BuilderCommands\HotelCreateCommand.cs" />
     <Compile Include="BuilderCommands\HotelEditCommand.cs" />
+    <Compile Include="BuilderCommands\ReservationCreateCommand.cs" />
+    <Compile Include="BuilderCommands\ReservationEditCommand.cs" />
     <Compile Include="BuilderCommands\RoomCreateCommand.cs" />
     <Compile Include="BuilderCommands\PositionCreateCommand.cs" />
     <Compile Include="BuilderCommands\RoomEditCommand.cs" />
@@ -153,13 +155,18 @@
     <Compile Include="BuilderCommands\WorkerEditCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\VisitorsController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
+    <Compile Include="Extensions\NamedExtension.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelBuilders\ReservationEditModelBuilder.cs" />
+    <Compile Include="ModelBuilders\ReservationIndexViewBuilder.cs" />
+    <Compile Include="ModelBuilders\ReservationViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\RoomEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\PositionEditModelBuilder.cs" />
     <Compile Include="ModelBuilders\RoomIndexViewBuilder.cs" />
@@ -176,6 +183,7 @@
     <Compile Include="ModelBuilders\WorkerViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelViewModelBuilder.cs" />
     <Compile Include="Models\HotelModels.cs" />
+    <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\RoomModels.cs" />
     <Compile Include="Models\VisitorModels.cs" />
     <Compile Include="Models\PositionModels.cs" />
@@ -245,6 +253,12 @@
     <Content Include="Views\Rooms\Details.cshtml" />
     <Content Include="Views\Rooms\Edit.cshtml" />
     <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\Reservations\_ReservationFilterPartial.cshtml" />
+    <Content Include="Views\Reservations\Create.cshtml" />
+    <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\Details.cshtml" />
+    <Content Include="Views\Reservations\Edit.cshtml" />
+    <Content Include="Views\Reservations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

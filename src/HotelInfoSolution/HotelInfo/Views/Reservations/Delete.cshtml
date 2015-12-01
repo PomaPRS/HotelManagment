@@ -1,0 +1,78 @@
+﻿@model HotelInfo.Models.ReservationViewModel
+
+@{
+    ViewBag.Title = string.Format("Удалить {0}", Model.Title);
+}
+
+<h3>Подтвердите удаление должности</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HotelTitle)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HotelTitle)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RoomNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Advance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Advance)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VisitorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VisitorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ArrivalDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ArrivalDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DepartureDate)
+            </dd>
+        </dl>
+
+        <dl class="dl-horizontal">
+            <dd>
+                @using (Html.BeginForm("Delete", "Reservations", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.Id)
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Удалить" class="btn btn-primary" />
+                    </div>
+                }
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
