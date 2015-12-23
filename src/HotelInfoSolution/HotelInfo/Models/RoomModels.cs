@@ -27,6 +27,8 @@ namespace HotelInfo.Models
         [Required]
         [Display(Name = "Номер комнаты")]
         public string Number { get; set; }
+        [Display(Name = "Бронь")]
+        public virtual ICollection<SelectListItem> Reservations { get; set; }
     }
 
     public class RoomCreateModel

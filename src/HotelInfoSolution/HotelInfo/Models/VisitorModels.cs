@@ -17,6 +17,8 @@ namespace HotelInfo.Models
         [Required]
         [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
+        [Display(Name = "Бронь")]
+        public ICollection<SelectListItem> Reservations { get; set; }
     }
 
     public class VisitorCreateModel

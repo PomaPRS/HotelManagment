@@ -11,6 +11,7 @@ namespace HotelInfo.Models
         [Required]
         [Display(Name = "Название")]
         public string Title { get; set; }
+        public ICollection<SelectListItem> Workers { get; set; }
     }
 
     public class PositionCreateModel

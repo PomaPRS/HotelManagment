@@ -43,6 +43,33 @@
     </div>
 </div>
 
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Сотрудники
+    </div>
+
+    @if (Model.Workers.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Имя</th>
+            </tr>
+            @foreach (var item in Model.Workers)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Text, "Details", "Workers", new { id = item.Value }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список сотрудников пуст.</div>
+    }
+</div>
+
 <div>
     @Html.ActionLink("Назад", "Index")
 </div>
