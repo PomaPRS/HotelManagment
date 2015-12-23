@@ -49,6 +49,19 @@ namespace HotelInfo.Models
         [Required]
         [Display(Name = "Адрес")]
         public string Address { get; set; }
+        public BossCreateModel Boss { get; set; }
+    }
+
+    public class BossCreateModel
+    {
+        [Display(Name = "ИНН")]
+        public string IndividualId { get; set; }
+        [Display(Name = "Имя")]
+        public string FirstName { get; set; }
+        [Display(Name = "Фамилия")]
+        public string SecondName { get; set; }
+        [Display(Name = "Отчество")]
+        public string MiddleName { get; set; }
     }
 
     public enum HotelSortingType

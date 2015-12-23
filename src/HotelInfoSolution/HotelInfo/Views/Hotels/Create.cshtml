@@ -36,9 +36,44 @@
                 </div>
             </div>
 
+            <div id="bossArea" class="hidden">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.Boss.FirstName)</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.Boss.FirstName, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Boss.FirstName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.Boss.SecondName)</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.Boss.SecondName, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Boss.SecondName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.Boss.MiddleName)</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.Boss.MiddleName, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Boss.MiddleName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.Boss.IndividualId)</label>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(m => m.Boss.IndividualId, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Boss.IndividualId)
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10 ">
                     <input type="submit" class="btn btn-primary" value="Добавить"/>
+                    <input id="addBossBtn" type="button" class="btn btn-default" value="Добавить директора" />
                 </div>
             </div>
         }
@@ -48,3 +83,12 @@
 <div>
     @Html.ActionLink("Назад", "Index")
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#addBossBtn').click(function() {
+            $('#addBossBtn').hide();
+            $('#bossArea').toggleClass('hidden');
+        });
+    });
+</script>

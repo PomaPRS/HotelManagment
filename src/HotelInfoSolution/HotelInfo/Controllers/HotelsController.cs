@@ -56,7 +56,10 @@ namespace HotelInfo.Controllers
         
         public ActionResult Create()
         {
-            var model = new HotelCreateModel();
+            var model = new HotelCreateModel()
+            {
+                Boss = new BossCreateModel()
+            };
             return View(model);
         }
         
@@ -64,6 +67,12 @@ namespace HotelInfo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HotelCreateModel model)
         {
+            if (string.IsNullOrEmpty(model.Boss?.FirstName) ||
+                string.IsNullOrEmpty(model.Boss.SecondName) ||
+                string.IsNullOrEmpty(model.Boss.MiddleName) ||
+                string.IsNullOrEmpty(model.Boss.IndividualId))
+                return View(model);
+
             if (ModelState.IsValid)
             {
                 var hotel = _hotelCreateCommand.Execute(model);

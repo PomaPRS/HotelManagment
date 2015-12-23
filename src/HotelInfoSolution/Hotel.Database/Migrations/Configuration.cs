@@ -1,3 +1,5 @@
+using Hotel.Database.Model;
+
 namespace Hotel.Database.Migrations
 {
     using System;
@@ -14,6 +16,9 @@ namespace Hotel.Database.Migrations
 
         protected override void Seed(Hotel.Database.HotelContext context)
         {
+            context.Positions.AddOrUpdate(
+                x => x.Title,
+                new Position {Title = "Директор"});
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
