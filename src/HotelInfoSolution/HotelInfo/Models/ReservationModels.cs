@@ -32,9 +32,11 @@ namespace HotelInfo.Models
     public class ReservationCreateModel
     {
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата заезда")]
         public DateTime ArrivalDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата отъезда")]
         public DateTime DepartureDate { get; set; }
         [Required]

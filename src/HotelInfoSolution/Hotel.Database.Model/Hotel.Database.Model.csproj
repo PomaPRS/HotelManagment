@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Hotel.cs" />
     <Compile Include="IdentityBase.cs" />
+    <Compile Include="PopularRoom.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />

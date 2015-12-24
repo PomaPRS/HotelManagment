@@ -16,6 +16,7 @@ namespace Hotel.Database
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<PopularRoom> PopularRooms { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

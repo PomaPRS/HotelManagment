@@ -11,8 +11,8 @@
     @Scripts.Render("~/bundles/bootstrap")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -23,13 +23,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
                     <li>@Html.ActionLink("Гостиницы", "Index", "Hotels")</li>
                     <li>@Html.ActionLink("Сотрудники", "Index", "Workers")</li>
                     <li>@Html.ActionLink("Должности", "Index", "Positions")</li>
                     <li>@Html.ActionLink("Посетители", "Index", "Visitors")</li>
                     <li>@Html.ActionLink("Гостиничные номера", "Index", "Rooms")</li>
                     <li>@Html.ActionLink("Бронь", "Index", "Reservations")</li>
+                    <li>@Html.ActionLink("Популярные комнаты", "Index", "PopularRooms")</li>
                 </ul>
             </div>
         </div>

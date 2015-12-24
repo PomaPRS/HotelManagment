@@ -36,20 +36,26 @@ namespace HotelInfo.BuilderCommands
             _hotelRepo.Add(hotel);
             _hotelRepo.SaveChanges();
 
-            var position = _positionRepo.GetRange(x => x.Title == "Директор").Single();
-
-            var worker = new Worker()
+            if (!string.IsNullOrEmpty(model.Boss.FirstName) &&
+                !string.IsNullOrEmpty(model.Boss.SecondName) &&
+                !string.IsNullOrEmpty(model.Boss.MiddleName) &&
+                !string.IsNullOrEmpty(model.Boss.IndividualId))
             {
-                FirstName = model.Boss.FirstName,
-                SecondName = model.Boss.SecondName,
-                MiddleName = model.Boss.MiddleName,
-                IndividualId = model.Boss.IndividualId,
-                HotelId = hotel.Id,
-                PositionId = position.Id
-            };
-            
-            _workerRepo.Add(worker);
-            _workerRepo.SaveChanges();
+                var position = _positionRepo.GetRange(x => x.Title == "Директор").Single();
+
+                var worker = new Worker()
+                {
+                    FirstName = model.Boss.FirstName,
+                    SecondName = model.Boss.SecondName,
+                    MiddleName = model.Boss.MiddleName,
+                    IndividualId = model.Boss.IndividualId,
+                    HotelId = hotel.Id,
+                    PositionId = position.Id
+                };
+
+                _workerRepo.Add(worker);
+                _workerRepo.SaveChanges();
+            }
 
             return hotel;
         }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Web.Mvc;
 using Hotel.Database.Common;
 using Hotel.Database.Model;
@@ -57,7 +58,11 @@ namespace HotelInfo.Controllers
 
         public ActionResult Create()
         {
-            var model = new ReservationCreateModel();
+            var model = new ReservationCreateModel()
+            {
+                ArrivalDate = DateTime.Now,
+                DepartureDate = DateTime.Now
+            };
             return View(model);
         }
 

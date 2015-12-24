@@ -67,10 +67,16 @@ namespace HotelInfo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HotelCreateModel model)
         {
-            if (string.IsNullOrEmpty(model.Boss?.FirstName) ||
-                string.IsNullOrEmpty(model.Boss.SecondName) ||
-                string.IsNullOrEmpty(model.Boss.MiddleName) ||
-                string.IsNullOrEmpty(model.Boss.IndividualId))
+            bool allEmpty = string.IsNullOrEmpty(model.Boss?.FirstName) &&
+                            string.IsNullOrEmpty(model.Boss?.SecondName) &&
+                            string.IsNullOrEmpty(model.Boss?.MiddleName) &&
+                            string.IsNullOrEmpty(model.Boss?.IndividualId);
+            bool allFilled = !string.IsNullOrEmpty(model.Boss?.FirstName) &&
+                             !string.IsNullOrEmpty(model.Boss.SecondName) &&
+                             !string.IsNullOrEmpty(model.Boss.MiddleName) &&
+                             !string.IsNullOrEmpty(model.Boss.IndividualId);
+
+            if (!allEmpty && !allFilled)
                 return View(model);
 
             if (ModelState.IsValid)
