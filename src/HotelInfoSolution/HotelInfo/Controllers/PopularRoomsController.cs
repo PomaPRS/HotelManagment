@@ -14,7 +14,7 @@ namespace HotelInfo.Controllers
         // GET: PopularRooms
         public ActionResult Index()
         {
-            return View(db.PopularRooms.ToList());
+            return View(db.PopularRooms.OrderByDescending(x => x.VisitorCount).ToList());
         }
     }
 }
