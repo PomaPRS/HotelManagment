@@ -1,0 +1,21 @@
+﻿@model HotelInfo.Models.VisitorHotelReportModel
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("VisitorHotelReport", "Reports", null, FormMethod.Get, new {@class = "form-horizontal"}))
+        {
+            <div class="form-group">
+                <label class="col-sm-2 control-label">@Html.DisplayNameFor(x => x.VisitorName)</label>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.VisitorName, htmlAttributes: new {@class = "form-control"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10 ">
+                    <input type="submit" class="btn btn-primary" value="Поиск"/>
+                </div>
+            </div>
+        }
+    </div>
+</div>

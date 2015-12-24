@@ -1,0 +1,38 @@
+﻿@model IEnumerable<HotelInfo.Models.VisitorCountItemModel>
+
+@{
+    ViewBag.Title = "Количество посетителей гостиниц";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Гостиница</th>
+                <th>Количество посетителей</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.HotelTitle
+                    </td>
+                    <td>
+                        @item.Count
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список пуст.</div>
+    }
+</div>

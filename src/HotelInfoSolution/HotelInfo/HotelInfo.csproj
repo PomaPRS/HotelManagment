@@ -156,6 +156,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\PopularRoomsController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="ModelBuilders\WorkerViewModelBuilder.cs" />
     <Compile Include="ModelBuilders\HotelViewModelBuilder.cs" />
     <Compile Include="Models\HotelModels.cs" />
+    <Compile Include="Models\ReportModels.cs" />
     <Compile Include="Models\ReservationModels.cs" />
     <Compile Include="Models\RoomModels.cs" />
     <Compile Include="Models\VisitorModels.cs" />
@@ -349,6 +351,13 @@
     <Content Include="Views\Reservations\Edit.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Views\PopularRooms\Index.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Reports\FreeRoomReport.cshtml" />
+    <Content Include="Views\Reports\FreeRoomReportPartial.cshtml" />
+    <Content Include="Views\Reports\VisitorHotelReportPartial.cshtml" />
+    <Content Include="Views\Reports\VisitorHotelReport.cshtml" />
+    <Content Include="Views\Reports\VisitorCountReportPartial.cshtml" />
+    <Content Include="Views\Reports\VisitorCountReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,18 @@
+﻿@model HotelInfo.Models.ReportIndexModel
+
+@{
+    ViewBag.Title = "Отчеты";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@{
+    Html.RenderPartial("FreeRoomReportPartial", Model.FreeRoomReport);
+}
+@{
+    Html.RenderPartial("VisitorHotelReportPartial", Model.VisitorHotelReport);
+}
+@{
+    Html.RenderPartial("VisitorCountReportPartial", Model.VisitorCountReport);
+}

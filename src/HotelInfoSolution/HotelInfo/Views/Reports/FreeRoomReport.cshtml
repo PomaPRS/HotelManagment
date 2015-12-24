@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Hotel.Database.Model.Room>
+
+@{
+    ViewBag.Title = "Свободные комнаты";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered">
+            <tr>
+                <th>Гостиница</th>
+                <th>Комната</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Hotel.Title
+                    </td>
+                    <td>
+                        @item.Number
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <div class="panel-body">Список пуст.</div>
+    }
+</div>
